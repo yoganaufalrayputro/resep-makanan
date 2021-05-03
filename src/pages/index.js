@@ -1,4 +1,5 @@
 import Splash from "./Splash";
 import Main from "./Main";
 import Login from "./Login";
-export { Splash, Main, Login };
+import Register from "./Register";
+export { Splash, Main, Login, Register };
