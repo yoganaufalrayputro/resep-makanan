@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  NavigatorIOS,
   StyleSheet,
   Text,
   TextInput,
@@ -8,7 +9,7 @@ import {
   View,
 } from "react-native";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -24,7 +25,10 @@ const Login = () => {
           <Text style={styles.title}>Password</Text>
           <TextInput style={styles.input} />
         </View>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate("Main")}
+        >
           <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
             Login
           </Text>
@@ -34,7 +38,7 @@ const Login = () => {
         <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
           Don't have an account?
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text
             style={{
               fontSize: 20,

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace("Login");
+    }, 2000);
+  });
+
   return (
     <View
       style={{

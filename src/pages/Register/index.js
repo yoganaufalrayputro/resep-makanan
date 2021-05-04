@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 
-const Register = () => {
+const Register = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -28,7 +28,10 @@ const Register = () => {
           <Text style={styles.title}>Password</Text>
           <TextInput style={styles.input} />
         </View>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate("Main")}
+        >
           <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
             Sign Up
           </Text>
@@ -38,7 +41,7 @@ const Register = () => {
         <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
           Already have an account?
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text
             style={{
               fontSize: 20,

@@ -12,17 +12,9 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function Main() {
+export default function Main({ navigation }) {
   const [isLoading, setLoading] = useState(true);
-  const [resep, setResep] = useState({
-    title: "",
-    desc: "",
-    thumb: "",
-    dificulty: "",
-    ingredient: "",
-    step: "",
-    times: "",
-  });
+  const [resep, setResep] = useState({});
 
   useEffect(() => {
     fetch(
@@ -31,12 +23,12 @@ export default function Main() {
       .then((respone) => respone.json())
       .then((json) => {
         setResep(json.results);
-        // console.log(json);
+        console.log(resep);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
-
+  console.log(resep.key);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -72,7 +64,13 @@ export default function Main() {
               data={resep}
               renderItem={({ item }) => (
                 <View style={styles.box}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate("DetailResep", {
+                        key: item.key,
+                      });
+                    }}
+                  >
                     <Image
                       // resizeMode="cover"
                       source={{ uri: item.thumb }}
