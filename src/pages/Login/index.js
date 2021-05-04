@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
         </View>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>Password</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} secureTextEntry={true} />
         </View>
         <TouchableOpacity
           style={styles.loginButton}
