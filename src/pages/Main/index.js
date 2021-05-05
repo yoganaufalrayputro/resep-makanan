@@ -84,11 +84,18 @@ export default function Main({ navigation }) {
           <FlatList
             data={category}
             renderItem={({ item }) => (
-              <View style={styles.category_box}>
-                <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("CategoryItem", {
+                    key: item.key,
+                    category: item.category,
+                  });
+                }}
+              >
+                <View style={styles.category_box}>
                   <Text style={styles.category}>{item.category}</Text>
-                </TouchableOpacity>
-              </View>
+                </View>
+              </TouchableOpacity>
             )}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -112,7 +119,6 @@ export default function Main({ navigation }) {
                     onPress={() => {
                       navigation.navigate("DetailResep", {
                         key: item.key,
-                        param: "test param",
                       });
                     }}
                   >
