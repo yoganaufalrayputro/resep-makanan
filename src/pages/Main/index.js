@@ -10,27 +10,45 @@ import {
   SafeAreaView,
   TextInput,
   ScrollView,
+  Dimensions,
+  StatusBar,
 } from "react-native";
+
+const width = Dimensions.get("window").width - 50;
 
 export default function Main({ navigation }) {
   const [isLoading, setLoading] = useState(true);
   const [resep, setResep] = useState({});
+  const [category, setCategory] = useState();
+  // /api/search/?q=coto
+  // api/recipes-length/?limit=10
+  const BASE_URL = "https://masak-apa.tomorisakura.vercel.app";
+  const api_main = "/api/recipes-length/?limit=10";
+  const api_category = "/api/categorys/recipes";
 
   useEffect(() => {
-    fetch(
-      "https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=10"
-    )
+    fetch(`${BASE_URL}${api_main}`)
       .then((respone) => respone.json())
       .then((json) => {
         setResep(json.results);
-        console.log(resep);
+        // console.log(resep);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+
+    fetch(`${BASE_URL}${api_category}`)
+      .then((respone) => respone.json())
+      .then((json) => {
+        setCategory(json.results);
+        console.log(json);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
-  console.log(resep.key);
+
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar animated={true} barStyle="default" hidden={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
@@ -52,8 +70,34 @@ export default function Main({ navigation }) {
               source={require("../../../assets/search.png")}
               style={styles.icon}
             />
-            <TextInput placeholder="Search" style={styles.input} />
+            <TextInput
+              placeholder="Cari masakan yang kamu mau.."
+              style={styles.input}
+            />
           </View>
+        </View>
+
+        <Text style={{ fontSize: 20, fontWeight: "600", marginBottom: 10 }}>
+          Kategori
+        </Text>
+        <View>
+          <FlatList
+            data={category}
+            renderItem={({ item }) => (
+              <View style={styles.category_box}>
+                <TouchableOpacity>
+                  <Text style={styles.category}>{item.category}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            // numColumns={5}
+          />
+        </View>
+
+        <View style={{ marginTop: 10, alignItems: "center" }}>
+          <Text style={styles.titles}>Resep Hari ini untuk kamu </Text>
         </View>
         {/* main */}
         <View style={{ alignItems: "center" }}>
@@ -68,6 +112,7 @@ export default function Main({ navigation }) {
                     onPress={() => {
                       navigation.navigate("DetailResep", {
                         key: item.key,
+                        param: "test param",
                       });
                     }}
                   >
@@ -101,7 +146,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 20,
-    marginTop: 30,
   },
   box: {
     width: 350,
@@ -140,5 +184,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#EFEFEF",
   },
-  input: { fontSize: 18, fontWeight: "bold", flex: 1, marginLeft: 10 },
+  input: { fontSize: 14, fontWeight: "600", flex: 1, marginLeft: 10 },
+  category_box: {
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginRight: 8,
+    justifyContent: "center",
+    alignContent: "center",
+    width: width / 2,
+    borderRadius: 30,
+    backgroundColor: "#36CFAB",
+  },
+  category: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "600",
+    textAlign: "center",
+    marginVertical: 10,
+  },
+  titles: {
+    fontSize: 25,
+    fontWeight: "700",
+    marginVertical: 10,
+  },
 });

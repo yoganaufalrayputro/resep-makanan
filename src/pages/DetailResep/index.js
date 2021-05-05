@@ -81,7 +81,8 @@ const DetailResep = ({ navigation, route }) => {
                 numColumns={2}
                 renderItem={({ item }) => (
                   <View style={styles.item}>
-                    <Text style={styles.text}>{item}</Text>
+                    <Text style={{ color: "#000" }}>-</Text>
+                    <Text style={styles.text}> {item}</Text>
                   </View>
                 )}
               />
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#FDECD2",
     paddingLeft: 20,
+    flexDirection: "row",
   },
   image: {
     // flex: 0.3,
