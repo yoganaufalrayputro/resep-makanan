@@ -31,38 +31,47 @@ const CategoryItem = ({ navigation, route }) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <StatusBar animated={true} barStyle="default" hidden={false} />
       <View>
-        <Text>{category}</Text>
+        <Text style={styles.title}>{category}</Text>
 
-        <FlatList
-          data={item}
-          renderItem={({ item }) => (
-            <View style={styles.wrapBox}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("DetailResep", {
-                    key: item.key,
-                  });
-                }}
-              >
-                <Image
-                  // resizeMode="cover"
-                  source={{ uri: item.thumb }}
-                  style={styles.image}
-                />
-                <View style={{ padding: 10 }}>
-                  <Text>{item.title}</Text>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text style={{ marginRight: 10 }}>{item.dificulty}</Text>
-                    <Text>{item.times}</Text>
+        <View style={styles.flatlist}>
+          <FlatList
+            data={item}
+            renderItem={({ item }) => (
+              <View style={styles.wrapBox}>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("DetailResep", {
+                      key: item.key,
+                    });
+                  }}
+                >
+                  <View style={{ alignItems: "center" }}>
+                    <Image
+                      // resizeMode="cover"
+                      source={{ uri: item.thumb }}
+                      style={styles.image}
+                    />
                   </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+                  <View style={{ padding: 15 }}>
+                    <Text style={{ fontSize: 17 }}>{item.title}</Text>
+                    <View style={{ flexDirection: "row" }}>
+                      <Text style={{ marginRight: 10, marginTop: 10 }}>
+                        {item.dificulty}
+                      </Text>
+                      <Text style={{ marginRight: 10, marginTop: 10 }}>
+                        {item.times}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            )}
+            numColumns={2}
+          />
+        </View>
       </View>
     </ScrollView>
   );
@@ -71,14 +80,37 @@ const CategoryItem = ({ navigation, route }) => {
 export default CategoryItem;
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 15,
+  },
   wrapBox: {
-    borderWidth: 1,
     width: 170,
-    margin: "auto",
+    marginRight: 10,
+    marginBottom: 10,
     alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   image: {
-    width: 150,
+    width: 170,
     height: 150,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+  },
+  title: {
+    fontSize: 25,
+    marginVertical: 25,
+    fontWeight: "bold",
+  },
+  flatlist: {
+    alignItems: "center",
   },
 });
