@@ -6,15 +6,21 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
   View,
 } from "react-native";
 
 const Login = ({ navigation }) => {
   return (
+    
     <View style={styles.container}>
       <Image
         source={require("../../../assets/login.png")}
         style={styles.loginLogo}
+      />
+      <Image
+        source={require("../../../assets/orangecookie.png")}
+        style={styles.ocookie1}
       />
       <View style={styles.box}>
         <View style={styles.wrapInput}>
@@ -52,6 +58,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
+    
   );
 };
 
@@ -67,6 +74,7 @@ const styles = StyleSheet.create({
   box: {
     width: "90%",
     height: 390,
+    bottom: 130,
     padding: 40,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -114,6 +122,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  loginLogo: { marginBottom: 29 },
-  sign: { flexDirection: "row", marginTop: 20 },
+  loginLogo: { 
+    top: 140,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  sign: { 
+    flexDirection: "row",
+    bottom: 70,
+  },
+  ocookie1: {
+    width: 300,
+    height: 300,
+    right: 150,
+    top : 325,
+    opacity: 0.5,
+  },
+ 
 });
