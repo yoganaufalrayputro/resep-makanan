@@ -6,13 +6,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView,
   View,
+  ScrollView
 } from "react-native";
 
 const Login = ({ navigation }) => {
   return (
-    
     <View style={styles.container}>
       <Image
         source={require("../../../assets/login.png")}
@@ -21,6 +20,10 @@ const Login = ({ navigation }) => {
       <Image
         source={require("../../../assets/orangecookie.png")}
         style={styles.ocookie1}
+      />
+      <Image
+        source={require("../../../assets/orangecookie.png")}
+        style={styles.ocookie2}
       />
       <View style={styles.box}>
         <View style={styles.wrapInput}>
@@ -48,9 +51,9 @@ const Login = ({ navigation }) => {
           <Text
             style={{
               fontSize: 20,
-              fontWeight: "400",
+              fontWeight: "500",
               color: "#FF8E4C",
-              fontStyle: "italic",
+              fontStyle: "italic" 
             }}
           >
             Sign Up
@@ -58,7 +61,6 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
-    
   );
 };
 
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
   box: {
     width: "90%",
     height: 390,
-    bottom: 130,
+    bottom: 220,
     padding: 40,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -123,20 +125,27 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loginLogo: { 
-    top: 140,
+    top: 250,
     justifyContent: "center",
     alignItems: "center",
   },
   sign: { 
     flexDirection: "row",
-    bottom: 70,
+    bottom: 175,
   },
   ocookie1: {
     width: 300,
     height: 300,
     right: 150,
-    top : 325,
+    bottom: -420,
     opacity: 0.5,
+  },
+  ocookie2: {
+    width: 200,
+    height: 200,
+    opacity: 0.5,
+    left: 180,
+    bottom: 240,
   },
  
 });
