@@ -15,6 +15,14 @@ const Register = ({ navigation }) => {
         source={require("../../../assets/signup.png")}
         style={styles.regisLogo}
       />
+      <Image
+        source={require("../../../assets/orangecookie.png")}
+        style={styles.ocookie1}
+      />
+      <Image
+        source={require("../../../assets/orangecookie.png")}
+        style={styles.ocookie2}
+      />
       <View style={styles.box}>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>E-mail</Text>
@@ -50,7 +58,7 @@ const Register = ({ navigation }) => {
               fontStyle: "italic",
             }}
           >
-            Sign In
+            Login
           </Text>
         </TouchableOpacity>
       </View>
@@ -70,6 +78,7 @@ const styles = StyleSheet.create({
   box: {
     width: "90%",
     height: 490,
+    bottom: 250,
     padding: 35,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -117,6 +126,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  regisLogo: { marginBottom: 5 },
-  sign: { flexDirection: "row", marginTop: 20 },
+  regisLogo: {
+    top: 250, 
+  },
+  sign: { 
+    flexDirection: "row", 
+    bottom: 230,
+  },
+  ocookie1: {
+    width: 300,
+    height: 300,
+    right: 150,
+    bottom: -470,
+    opacity: 0.4,
+  },
+  ocookie2: {
+    width: 200,
+    height: 200,
+    opacity: 0.4,
+    left: 180,
+    bottom: 200,
+  },
 });
