@@ -25,6 +25,8 @@ const Login = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((json) => {
+          setUsername("");
+          setPassword("");
           if (json == "login berhasil") {
             navigation.navigate("Main", {
               user: username,
@@ -56,6 +58,8 @@ const Login = ({ navigation }) => {
           <TextInput
             style={styles.input}
             onChangeText={(text) => setUsername(text)}
+            autoCapitalize="none"
+            value={username}
           />
         </View>
         <View style={styles.wrapInput}>
@@ -64,6 +68,7 @@ const Login = ({ navigation }) => {
             style={styles.input}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
+            value={password}
           />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={() => login()}>

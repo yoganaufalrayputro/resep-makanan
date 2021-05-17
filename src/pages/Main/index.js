@@ -41,7 +41,6 @@ export default function Main({ navigation, route }) {
       .then((respone) => respone.json())
       .then((json) => {
         setCategory(json.results);
-        console.log(json);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));

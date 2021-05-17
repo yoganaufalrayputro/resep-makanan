@@ -7,14 +7,23 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { Formik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  username: Yup.string().required("Username harus di isi"),
+  email: Yup.string()
+    .required("Email harus di isi")
+    .email("format email salah"),
+  password: Yup.string()
+    .required("Password harus di isi")
+    .min(8, "password harus minimal 8 karakter")
+    .max(16, "password minimal 16 karakter"),
+});
 
 const Register = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function register() {
-    if (username == "" || email == "" || password == "") {
+  function register(values) {
+    if (values.username == "" || values.email == "" || values.password == "") {
       alert("pastikan isi semua data");
     } else {
       fetch("https://masakinnn.000webhostapp.com/register.php", {
@@ -22,7 +31,7 @@ const Register = ({ navigation }) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `username=${username}&email=${email}&password=${password}`,
+        body: `username=${values.username}&email=${values.email}&password=${values.password}`,
       })
         .then((response) => response.json())
         .then((json) => {
@@ -51,35 +60,64 @@ const Register = ({ navigation }) => {
         source={require("../../../assets/orangecookie.png")}
         style={styles.ocookie2}
       />
-      <View style={styles.box}>
-        <View style={styles.wrapInput}>
-          <Text style={styles.title}>E-mail</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
-        <View style={styles.wrapInput}>
-          <Text style={styles.title}>Username</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(text) => setUsername(text)}
-          />
-        </View>
-        <View style={styles.wrapInput}>
-          <Text style={styles.title}>Password</Text>
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-          />
-        </View>
-        <TouchableOpacity style={styles.loginButton} onPress={() => register()}>
-          <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
-            Sign Up
-          </Text>
-        </TouchableOpacity>
-      </View>
+
+      <Formik
+        initialValues={{ username: "", email: "", password: "" }}
+        validationSchema={validationSchema}
+        onSubmit={(values) => register(values)}
+      >
+        {(props) => (
+          <View style={styles.box}>
+            <View style={styles.wrapInput}>
+              <Text style={styles.title}>E-mail</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("email")}
+                onBlur={props.handleBlur("email")}
+                autoCapitalize="none"
+              />
+              <Text style={{ color: "red", marginTop: 5 }}>
+                {props.touched.email && props.errors.email}
+              </Text>
+            </View>
+
+            <View style={styles.wrapInput}>
+              <Text style={styles.title}>Username</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("username")}
+                onBlur={props.handleBlur("username")}
+                autoCapitalize="none"
+              />
+              <Text style={{ color: "red", marginTop: 5 }}>
+                {props.touched.username && props.errors.username}
+              </Text>
+            </View>
+
+            <View style={styles.wrapInput}>
+              <Text style={styles.title}>Password</Text>
+              <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                onChangeText={props.handleChange("password")}
+                onBlur={props.handleBlur("password")}
+              />
+              <Text style={{ color: "red", marginTop: 5 }}>
+                {props.touched.password && props.errors.password}
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={props.handleSubmit}
+            >
+              <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </Formik>
+
       <View style={styles.sign}>
         <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
           Already have an account?
