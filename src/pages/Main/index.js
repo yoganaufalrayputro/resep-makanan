@@ -53,19 +53,11 @@ export default function Main({ navigation, route }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-<<<<<<< HEAD
-            <Text style={{ fontSize: 25, color: "#FAB301", fontWeight: "bold" }}>
-              Welcome
-            </Text>
-            <Text style={{ fontSize: 34,color: "#FF8E4C" , fontWeight: "bold" }}>
-              Afif Hibatullah
-=======
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Welcome</Text>
+            <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Selamat Datang</Text>
             <Text
-              style={{ fontSize: 34, color: "#36CFAB", fontWeight: "bold" }}
+              style={{ fontSize: 30, color: "#FAB301", fontWeight: "bold" }}
             >
               {user}
->>>>>>> c83ef19405b7539e4229f1114129b57fcc55dafd
             </Text>
           </View>
           <Image
