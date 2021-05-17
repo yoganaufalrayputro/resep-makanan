@@ -17,7 +17,7 @@ const Register = ({ navigation }) => {
     if (username == "" || email == "" || password == "") {
       alert("pastikan isi semua data");
     } else {
-      fetch("http://192.168.1.5/recipe_server/register.php", {
+      fetch("https://masakinnn.000webhostapp.com/register.php", {
         method: "post",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -26,8 +26,6 @@ const Register = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((json) => {
-          var temp = JSON.stringify(json.result);
-          console.log(temp);
           if (json.result == "Berhasil membuat akun") {
             alert("akun berhasil dibuat");
 

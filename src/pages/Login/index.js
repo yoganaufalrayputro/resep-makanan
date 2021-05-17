@@ -16,7 +16,7 @@ const Login = ({ navigation }) => {
     if (username == "" || password == "") {
       alert("masukan username atau password");
     } else {
-      fetch("http://192.168.1.5/recipe_server/login.php", {
+      fetch("https://masakinnn.000webhostapp.com/login.php", {
         method: "post",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -29,6 +29,8 @@ const Login = ({ navigation }) => {
             navigation.navigate("Main", {
               user: username,
             });
+          } else {
+            alert("username atau password salah");
           }
         });
     }
