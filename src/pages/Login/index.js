@@ -79,7 +79,7 @@ const Login = ({ navigation }) => {
       </View>
       <View style={styles.sign}>
         <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
-          Don't have an account?
+          Belum punya akun?
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text
@@ -88,9 +88,8 @@ const Login = ({ navigation }) => {
               fontWeight: "500",
               color: "#FF8E4C",
               fontStyle: "italic",
-            }}
-          >
-            Sign Up
+            }}>
+            Daftar
           </Text>
         </TouchableOpacity>
       </View>
