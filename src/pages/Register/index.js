@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -9,6 +9,36 @@ import {
 } from "react-native";
 
 const Register = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function register() {
+    if (username == "" || email == "" || password == "") {
+      alert("pastikan isi semua data");
+    } else {
+      fetch("http://192.168.1.5/recipe_server/register.php", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `username=${username}&email=${email}&password=${password}`,
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          var temp = JSON.stringify(json.result);
+          console.log(temp);
+          if (json.result == "Berhasil membuat akun") {
+            alert("akun berhasil dibuat");
+
+            navigation.navigate("Login");
+          } else {
+            alert("terjadi kesalahan");
+          }
+        });
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Image
@@ -26,20 +56,27 @@ const Register = ({ navigation }) => {
       <View style={styles.box}>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>E-mail</Text>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>Username</Text>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setUsername(text)}
+          />
         </View>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>Password</Text>
-          <TextInput style={styles.input} secureTextEntry={true} />
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => navigation.navigate("Main")}
-        >
+        <TouchableOpacity style={styles.loginButton} onPress={() => register()}>
           <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
             Sign Up
           </Text>
@@ -127,10 +164,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   regisLogo: {
-    top: 250, 
+    top: 250,
   },
-  sign: { 
-    flexDirection: "row", 
+  sign: {
+    flexDirection: "row",
     bottom: 230,
   },
   ocookie1: {

@@ -4,5 +4,6 @@ import Login from "./Login";
 import Register from "./Register";
 import DetailResep from "./DetailResep";
 import CategoryItem from "./CategoryItem";
+import SearchItem from "./SearchItem";
 
-export { Splash, Main, Login, Register, DetailResep, CategoryItem };
+export { Splash, Main, Login, Register, DetailResep, CategoryItem, SearchItem };
