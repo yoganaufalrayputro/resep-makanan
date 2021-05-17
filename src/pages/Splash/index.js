@@ -19,7 +19,7 @@ const Splash = ({ navigation }) => {
     >
       <Image
         source={require("../../../assets/logo.png")}
-        style={{ width: 350, height: 272, marginTop: "auto" }}
+        style={{ width: 350, height: 250, marginTop: "auto" }}
         resizeMode="contain"
       />
       <View
@@ -39,7 +39,7 @@ const Splash = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 37,
+    fontSize: 30,
     fontWeight: "600",
     color: "#FF8E4C",
   },

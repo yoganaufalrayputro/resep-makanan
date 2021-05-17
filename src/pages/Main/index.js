@@ -52,10 +52,10 @@ export default function Main({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Welcome</Text>
-            <Text
-              style={{ fontSize: 34, color: "#36CFAB", fontWeight: "bold" }}
-            >
+            <Text style={{ fontSize: 25, color: "#FAB301", fontWeight: "bold" }}>
+              Welcome
+            </Text>
+            <Text style={{ fontSize: 34,color: "#FF8E4C" , fontWeight: "bold" }}>
               Afif Hibatullah
             </Text>
           </View>
@@ -150,7 +150,7 @@ export default function Main({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FDECD2",
     paddingHorizontal: 20,
   },
   box: {
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     width: width / 2,
     borderRadius: 30,
-    backgroundColor: "#36CFAB",
+    backgroundColor: "#FAB301",
   },
   category: {
     color: "#fff",
