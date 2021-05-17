@@ -7,6 +7,7 @@ import {
   Register,
   DetailResep,
   CategoryItem,
+  SearchItem,
 } from "../pages";
 
 const Stack = createStackNavigator();
@@ -42,6 +43,11 @@ const Router = () => {
       <Stack.Screen
         name="CategoryItem"
         component={CategoryItem}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SearchItem"
+        component={SearchItem}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

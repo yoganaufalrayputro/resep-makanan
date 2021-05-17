@@ -8,15 +8,16 @@ import {
   FlatList,
   TouchableOpacity,
   SafeAreaView,
-  TextInput,
   ScrollView,
   Dimensions,
   StatusBar,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 const width = Dimensions.get("window").width - 50;
 
-export default function Main({ navigation }) {
+export default function Main({ navigation, route }) {
+  const { user } = route.params;
   const [isLoading, setLoading] = useState(true);
   const [resep, setResep] = useState({});
   const [category, setCategory] = useState();
@@ -52,11 +53,19 @@ export default function Main({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
+<<<<<<< HEAD
             <Text style={{ fontSize: 25, color: "#FAB301", fontWeight: "bold" }}>
               Welcome
             </Text>
             <Text style={{ fontSize: 34,color: "#FF8E4C" , fontWeight: "bold" }}>
               Afif Hibatullah
+=======
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Welcome</Text>
+            <Text
+              style={{ fontSize: 34, color: "#36CFAB", fontWeight: "bold" }}
+            >
+              {user}
+>>>>>>> c83ef19405b7539e4229f1114129b57fcc55dafd
             </Text>
           </View>
           <Image
@@ -70,10 +79,15 @@ export default function Main({ navigation }) {
               source={require("../../../assets/search.png")}
               style={styles.icon}
             />
-            <TextInput
-              placeholder="Cari masakan yang kamu mau.."
-              style={styles.input}
-            />
+            <TouchableWithoutFeedback
+              onPress={() => {
+                navigation.navigate("SearchItem");
+              }}
+            >
+              <Text style={styles.input}>
+                Cari resep masakan yang kamu mau..
+              </Text>
+            </TouchableWithoutFeedback>
           </View>
         </View>
 
@@ -190,7 +204,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#EFEFEF",
   },
-  input: { fontSize: 14, fontWeight: "600", flex: 1, marginLeft: 10 },
+  input: {
+    fontSize: 14,
+    fontWeight: "600",
+    flex: 1,
+    marginLeft: 10,
+    opacity: 0.5,
+  },
   category_box: {
     flexDirection: "row",
     paddingHorizontal: 10,

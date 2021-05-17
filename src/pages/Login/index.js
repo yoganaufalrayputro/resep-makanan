@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
-  NavigatorIOS,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  ScrollView
 } from "react-native";
 
 const Login = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function login() {
+    if (username == "" || password == "") {
+      alert("masukan username atau password");
+    } else {
+      fetch("https://masakinnn.000webhostapp.com/login.php", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `username=${username}&password=${password}`,
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          if (json == "login berhasil") {
+            navigation.navigate("Main", {
+              user: username,
+            });
+          } else {
+            alert("username atau password salah");
+          }
+        });
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Image
@@ -27,17 +52,21 @@ const Login = ({ navigation }) => {
       />
       <View style={styles.box}>
         <View style={styles.wrapInput}>
-          <Text style={styles.title}>E-mail / Username</Text>
-          <TextInput style={styles.input} />
+          <Text style={styles.title}>Username</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setUsername(text)}
+          />
         </View>
         <View style={styles.wrapInput}>
           <Text style={styles.title}>Password</Text>
-          <TextInput style={styles.input} secureTextEntry={true} />
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => navigation.navigate("Main")}
-        >
+        <TouchableOpacity style={styles.loginButton} onPress={() => login()}>
           <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
             Login
           </Text>
@@ -53,7 +82,7 @@ const Login = ({ navigation }) => {
               fontSize: 20,
               fontWeight: "500",
               color: "#FF8E4C",
-              fontStyle: "italic" 
+              fontStyle: "italic",
             }}
           >
             Sign Up
@@ -124,12 +153,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  loginLogo: { 
+  loginLogo: {
     top: 250,
     justifyContent: "center",
     alignItems: "center",
   },
-  sign: { 
+  sign: {
     flexDirection: "row",
     bottom: 175,
   },
@@ -147,5 +176,4 @@ const styles = StyleSheet.create({
     left: 180,
     bottom: 240,
   },
- 
 });
