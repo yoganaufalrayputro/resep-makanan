@@ -146,15 +146,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 2,
+    borderColor: "#bfbdb8",
+    borderWidth: 1,
   },
   image: {
     width: "100%",
@@ -171,16 +164,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-
-    elevation: 1,
     marginVertical: 20,
+    borderColor: "#bfbdb8",
+    borderWidth: 1,
   },
   icon: { width: 28, height: 28, marginLeft: 20 },
   input: {

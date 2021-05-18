@@ -204,14 +204,8 @@ const styles = StyleSheet.create({
     width: "98%",
     borderRadius: 10,
     marginRight: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 1,
-    elevation: 1,
+    borderWidth: 1,
+    borderColor: "#bfbdb8",
     marginVertical: 20,
   },
 
