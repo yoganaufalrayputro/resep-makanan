@@ -73,25 +73,25 @@ const DetailResep = ({ navigation, route }) => {
           </View>
           <View>
             <Text style={styles.h2}>Bahan</Text>
-            {isLoading ? (
-              <ActivityIndicator size="large" color="#0000ff" />
-            ) : (
-              <FlatList
-                data={detail.ingredient}
-                numColumns={2}
-                renderItem={({ item }) => (
-                  <View style={styles.item}>
-                    <Text style={{ color: "#000" }}>-</Text>
-                    <Text style={styles.text}> {item}</Text>
-                  </View>
-                )}
-              />
-            )}
+            {/* {isLoading ? (
+              <ActivityIndicator size="large" color="#000" />
+            ) : ( */}
+            <FlatList
+              data={detail.ingredient}
+              numColumns={2}
+              renderItem={({ item }) => (
+                <View style={styles.item}>
+                  <Text style={{ color: "#000" }}>-</Text>
+                  <Text style={styles.text}> {item}</Text>
+                </View>
+              )}
+            />
+            {/* )} */}
           </View>
           <View>
             <Text style={styles.h2}>Langkah</Text>
             {isLoading ? (
-              <ActivityIndicator size="large" color="#0000ff" />
+              <ActivityIndicator size="large" color="#000" />
             ) : (
               <FlatList
                 data={detail.step}
@@ -114,7 +114,11 @@ export default DetailResep;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
     backgroundColor: "#FFFFFF",
+=======
+    backgroundColor: "#fff",
+>>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     justifyContent: "center",
     alignContent: "center",
     paddingHorizontal: 25,
@@ -123,6 +127,7 @@ const styles = StyleSheet.create({
     position: "relative",
     top: -32,
     paddingTop: 30,
+    //FDECD2
   },
   buttonBack: {
     paddingVertical: 5,
@@ -131,13 +136,20 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 5,
-    width: 170,
+    width: "48%",
     marginRight: 3,
     marginBottom: 15,
     borderRadius: 10,
+<<<<<<< HEAD
     backgroundColor: "#C3D6E7",
     paddingLeft: 20,
+=======
+    backgroundColor: "#FDECD2",
+    paddingHorizontal: 20,
+>>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     flexDirection: "row",
+
+    elevation: 1,
   },
   image: {
     // flex: 0.3,
@@ -145,25 +157,27 @@ const styles = StyleSheet.create({
     height: 310,
   },
   title: {
-    fontSize: 23,
-    fontWeight: "bold",
+    fontSize: 21,
     color: "#000",
+    fontFamily: "poppins-bold",
   },
   text: {
     fontSize: 15,
     fontWeight: "300",
     color: "#000",
+    fontFamily: "poppins-regular",
   },
   text1: {
     fontSize: 15,
     fontWeight: "300",
     textAlign: "justify",
+    fontFamily: "poppins-regular",
   },
   h2: {
     fontSize: 20,
-    fontWeight: "bold",
     marginVertical: 10,
     color: "#000",
+    fontFamily: "poppins-bold",
   },
   icon: {
     width: 30,
@@ -186,6 +200,7 @@ const styles = StyleSheet.create({
   },
   note: {
     marginTop: 10,
+    fontFamily: "poppins-regular",
   },
   step: {
     marginBottom: 10,

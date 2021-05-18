@@ -25,8 +25,10 @@ const Login = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((json) => {
+          setUsername("");
+          setPassword("");
           if (json == "login berhasil") {
-            navigation.navigate("Main", {
+            navigation.replace("Main", {
               user: username,
             });
           } else {
@@ -56,6 +58,8 @@ const Login = ({ navigation }) => {
           <TextInput
             style={styles.input}
             onChangeText={(text) => setUsername(text)}
+            autoCapitalize="none"
+            value={username}
           />
         </View>
         <View style={styles.wrapInput}>
@@ -64,16 +68,31 @@ const Login = ({ navigation }) => {
             style={styles.input}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
+            value={password}
           />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={() => login()}>
-          <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 27,
+              fontWeight: "500",
+              fontFamily: "poppins-bold",
+            }}
+          >
             Login
           </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.sign}>
-        <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "400",
+            color: "#FFC979",
+            fontFamily: "poppins-regular",
+          }}
+        >
           Belum punya akun?
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
@@ -82,8 +101,9 @@ const Login = ({ navigation }) => {
               fontSize: 20,
               fontWeight: "500",
               color: "#FF8E4C",
-              fontStyle: "italic",
-            }}>
+              fontFamily: "poppins-italic",
+            }}
+          >
             Daftar
           </Text>
         </TouchableOpacity>
@@ -103,7 +123,6 @@ const styles = StyleSheet.create({
   },
   box: {
     width: "90%",
-    height: 390,
     bottom: 220,
     padding: 40,
     backgroundColor: "#fff",
@@ -125,8 +144,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "400",
-    color: "#FFC979",
+    color: "#db7b3b",
     marginBottom: 20,
+    fontFamily: "poppins-medium",
   },
   input: {
     width: 300,
@@ -140,7 +160,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    elevation: 9,
+    elevation: 2,
     paddingHorizontal: 20,
   },
   loginButton: {
@@ -151,6 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
+    elevation: 2,
   },
   loginLogo: {
     top: 250,

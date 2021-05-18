@@ -12,7 +12,9 @@ import {
   Dimensions,
   StatusBar,
   TouchableWithoutFeedback,
+  Alert,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 
 const width = Dimensions.get("window").width - 50;
 
@@ -21,8 +23,7 @@ export default function Main({ navigation, route }) {
   const [isLoading, setLoading] = useState(true);
   const [resep, setResep] = useState({});
   const [category, setCategory] = useState();
-  // /api/search/?q=coto
-  // api/recipes-length/?limit=10
+
   const BASE_URL = "https://masak-apa.tomorisakura.vercel.app";
   const api_main = "/api/recipes-length/?limit=10";
   const api_category = "/api/categorys/recipes";
@@ -41,11 +42,21 @@ export default function Main({ navigation, route }) {
       .then((respone) => respone.json())
       .then((json) => {
         setCategory(json.results);
-        console.log(json);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
+
+  const logout = () => {
+    Alert.alert("Keluar", "Yakin ingin keluar ?", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => navigation.replace("Login") },
+    ]);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,17 +64,32 @@ export default function Main({ navigation, route }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
+<<<<<<< HEAD
             <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Halo, Chef</Text>
+=======
+>>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
             <Text
-              style={{ fontSize: 30, color: "#FAB301", fontWeight: "bold" }}
+              style={{
+                fontSize: 30,
+                color: "#FF8E4C",
+                fontFamily: "poppins-bold",
+              }}
+            >
+              Selamat Datang
+            </Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "#FAB301",
+                fontFamily: "poppins-bold",
+              }}
             >
               {user}!
             </Text>
           </View>
-          <Image
-            source={require("../../../assets/boy.png")}
-            style={{ width: 70, height: 70 }}
-          />
+          <TouchableOpacity onPress={() => logout()}>
+            <Entypo name="log-out" size={35} color="#ab0f0f" />
+          </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", marginVertical: 20 }}>
           <View style={styles.searchContainer}>
@@ -83,7 +109,14 @@ export default function Main({ navigation, route }) {
           </View>
         </View>
 
-        <Text style={{ fontSize: 20, fontWeight: "600", marginBottom: 10 }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "600",
+            marginBottom: 10,
+            fontFamily: "poppins-regular",
+          }}
+        >
           Kategori
         </Text>
         <View>
@@ -109,13 +142,18 @@ export default function Main({ navigation, route }) {
           />
         </View>
 
-        <View style={{ marginTop: 10, alignItems: "center" }}>
+        <View
+          style={{
+            marginTop: 10,
+            alignItems: "center",
+          }}
+        >
           <Text style={styles.titles}>Resep Hari ini untuk kamu </Text>
         </View>
         {/* main */}
         <View style={{ alignItems: "center" }}>
           {isLoading ? (
-            <ActivityIndicator />
+            <ActivityIndicator size="large" color="#000" />
           ) : (
             <FlatList
               data={resep}
@@ -136,10 +174,17 @@ export default function Main({ navigation, route }) {
                     <View style={{ padding: 10 }}>
                       <Text style={styles.title}>{item.title}</Text>
                       <View style={{ flexDirection: "row" }}>
-                        <Text style={{ marginRight: 10 }}>
+                        <Text
+                          style={{
+                            marginRight: 10,
+                            fontFamily: "poppins-regular",
+                          }}
+                        >
                           {item.dificulty}
                         </Text>
-                        <Text>{item.times}</Text>
+                        <Text style={{ fontFamily: "poppins-regular" }}>
+                          {item.times}
+                        </Text>
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -156,11 +201,15 @@ export default function Main({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
     backgroundColor: "#FFFFFF",
+=======
+    backgroundColor: "#fff",
+>>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     paddingHorizontal: 20,
   },
   box: {
-    width: 350,
+    width: "98%",
     borderRadius: 10,
     marginRight: 10,
     shadowColor: "#000",
@@ -169,8 +218,8 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowRadius: 1,
+    elevation: 1,
     marginVertical: 20,
   },
 
@@ -180,11 +229,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   thumb: {
-    width: 350,
+    width: "100%",
     height: 205,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
+<<<<<<< HEAD
   text: { 
     width: 300, 
     borderBottomWidth: 1 
@@ -197,6 +247,16 @@ const styles = StyleSheet.create({
     width: 28, 
     height: 28, 
     marginLeft: 20 },
+=======
+  text: { width: 300, borderBottomWidth: 1 },
+  title: {
+    fontSize: 20,
+    fontWeight: "500",
+    marginBottom: 20,
+    fontFamily: "poppins-medium",
+  },
+  icon: { width: 28, height: 28, marginLeft: 20 },
+>>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
   searchContainer: {
     height: 50,
     borderRadius: 20,
@@ -204,13 +264,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#EFEFEF",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+
+    elevation: 2,
   },
   input: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600",
     flex: 1,
     marginLeft: 10,
     opacity: 0.5,
+    fontFamily: "poppins-regular",
   },
   category_box: {
     flexDirection: "row",
@@ -222,6 +291,15 @@ const styles = StyleSheet.create({
     width: width / 2,
     borderRadius: 30,
     backgroundColor: "#FAB301",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
   category: {
     color: "#fff",
@@ -229,10 +307,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     marginVertical: 10,
+    fontFamily: "poppins-regular",
   },
   titles: {
-    fontSize: 25,
-    fontWeight: "700",
+    fontSize: 23,
+    fontFamily: "poppins-bold",
     marginVertical: 10,
   },
 });
