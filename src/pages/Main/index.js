@@ -12,7 +12,9 @@ import {
   Dimensions,
   StatusBar,
   TouchableWithoutFeedback,
+  Alert,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 
 const width = Dimensions.get("window").width - 50;
 
@@ -45,6 +47,17 @@ export default function Main({ navigation, route }) {
       .finally(() => setLoading(false));
   }, []);
 
+  const logout = () => {
+    Alert.alert("Keluar", "Yakin ingin keluar ?", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => navigation.replace("Login") },
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar animated={true} barStyle="default" hidden={false} />
@@ -70,10 +83,9 @@ export default function Main({ navigation, route }) {
               {user}
             </Text>
           </View>
-          <Image
-            source={require("../../../assets/boy.png")}
-            style={{ width: 70, height: 70 }}
-          />
+          <TouchableOpacity onPress={() => logout()}>
+            <Entypo name="log-out" size={35} color="#ab0f0f" />
+          </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", marginVertical: 20 }}>
           <View style={styles.searchContainer}>
@@ -219,7 +231,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
     marginBottom: 20,
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins-medium",
   },
   icon: { width: 28, height: 28, marginLeft: 20 },
   searchContainer: {

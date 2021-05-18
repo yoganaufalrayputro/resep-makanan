@@ -185,9 +185,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "400",
-    color: "#FFC979",
+    color: "#db7b3b",
     marginBottom: 10,
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins-medium",
   },
   input: {
     width: 300,
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    marginBottom: 10,
   },
   regisLogo: {
     top: 250,

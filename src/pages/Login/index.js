@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
           setUsername("");
           setPassword("");
           if (json == "login berhasil") {
-            navigation.navigate("Main", {
+            navigation.replace("Main", {
               user: username,
             });
           } else {
@@ -144,9 +144,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "400",
-    color: "#FFC979",
+    color: "#db7b3b",
     marginBottom: 20,
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins-medium",
   },
   input: {
     width: 300,

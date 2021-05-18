@@ -65,6 +65,8 @@ const SearchItem = ({ navigation }) => {
             onChangeText={(text) => setSearch(text)}
             onSubmitEditing={() => searchItem(search)}
             style={styles.input}
+            autoFocus
+            autoCapitalize="none"
           />
         </View>
       </View>
