@@ -139,6 +139,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#FDECD2",
     paddingHorizontal: 20,
     flexDirection: "row",
+
+    elevation: 1,
   },
   image: {
     // flex: 0.3,

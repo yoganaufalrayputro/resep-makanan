@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowRadius: 1,
+    elevation: 1,
   },
   image: {
     width: 170,

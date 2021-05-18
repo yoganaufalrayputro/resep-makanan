@@ -3,7 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {
   Login,
   Main,
-  Splash,
   Register,
   DetailResep,
   CategoryItem,
@@ -15,11 +14,11 @@ const Stack = createStackNavigator();
 const Router = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Splash"
         component={Splash}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="Login"
         component={Login}

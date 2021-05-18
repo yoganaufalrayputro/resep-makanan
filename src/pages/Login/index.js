@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    elevation: 9,
+    elevation: 2,
     paddingHorizontal: 20,
   },
   loginButton: {
@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
+    elevation: 2,
   },
   loginLogo: {
     top: 250,

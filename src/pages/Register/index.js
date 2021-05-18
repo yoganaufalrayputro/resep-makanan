@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    elevation: 9,
+    elevation: 3,
     paddingHorizontal: 20,
   },
   loginButton: {
@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,
+    elevation: 2,
   },
   regisLogo: {
     top: 250,

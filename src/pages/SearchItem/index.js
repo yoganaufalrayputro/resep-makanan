@@ -151,9 +151,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
   image: {
     width: 170,
@@ -175,9 +176,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+
+    elevation: 1,
     marginVertical: 20,
   },
   icon: { width: 28, height: 28, marginLeft: 20 },

@@ -210,8 +210,8 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowRadius: 1,
+    elevation: 1,
     marginVertical: 20,
   },
 
@@ -241,14 +241,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#EFEFEF",
-    shadowColor: "#000",
     shadowOffset: {
-      width: 0,
+      width: 1,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+
+    elevation: 2,
   },
   input: {
     fontSize: 13,
@@ -273,9 +273,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
   category: {
     color: "#fff",
