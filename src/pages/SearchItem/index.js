@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 
 const API = "masak-apa-tomorisakura.vercel.app";
 const endpoint = "api/search/";
@@ -16,7 +17,7 @@ const endpoint = "api/search/";
 const SearchItem = ({ navigation }) => {
   const [search, setSearch] = useState();
   const [result, setResult] = useState();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   if (search !== "") {
@@ -34,6 +35,7 @@ const SearchItem = ({ navigation }) => {
     if (search == "") {
       return false;
     } else {
+      setLoading(true);
       fetch(`https://masak-apa-tomorisakura.vercel.app/api/search/?q=${search}`)
         .then((response) => response.json())
         .then((json) => {
@@ -47,20 +49,29 @@ const SearchItem = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.searchContainer}>
-        <Image
-          source={require("../../../assets/search.png")}
-          style={styles.icon}
-        />
-        <TextInput
-          placeholder="cari resep masakan"
-          onChangeText={(text) => setSearch(text)}
-          onSubmitEditing={() => searchItem(search)}
-          style={styles.input}
-        />
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+          <View style={styles.buttonBack}>
+            <Entypo name="chevron-left" size={45} color="#666564" />
+          </View>
+        </TouchableOpacity>
+        <View style={styles.searchContainer}>
+          <Image
+            source={require("../../../assets/search.png")}
+            style={styles.icon}
+          />
+          <TextInput
+            placeholder="Cari resep masakan"
+            onChangeText={(text) => setSearch(text)}
+            onSubmitEditing={() => searchItem(search)}
+            style={styles.input}
+          />
+        </View>
       </View>
       {isLoading ? (
-        <ActivityIndicator />
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <ActivityIndicator size="large" color="#000" />
+        </View>
       ) : (
         <View style={styles.flatList}>
           <FlatList
@@ -82,12 +93,27 @@ const SearchItem = ({ navigation }) => {
                     />
                   </View>
                   <View style={{ padding: 15 }}>
-                    <Text style={{ fontSize: 17 }}>{item.title}</Text>
-                    <View style={{ flexDirection: "row" }}>
+                    <Text
+                      style={{ fontSize: 17, fontFamily: "poppins-medium" }}
+                    >
+                      {item.title}
+                    </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        fontFamily: "poppins-regular",
+                      }}
+                    >
                       <Text style={{ marginRight: 10, marginTop: 10 }}>
                         {item.dificulty}
                       </Text>
-                      <Text style={{ marginRight: 10, marginTop: 10 }}>
+                      <Text
+                        style={{
+                          marginRight: 10,
+                          marginTop: 10,
+                          fontFamily: "poppins-regular",
+                        }}
+                      >
                         {item.times}
                       </Text>
                     </View>
@@ -109,6 +135,7 @@ export default SearchItem;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 15,
+    flex: 1,
   },
   wrapBox: {
     width: 170,
@@ -136,8 +163,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchContainer: {
+    width: "85%",
     height: 50,
-    marginTop: 10,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 25,
@@ -157,5 +184,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     flex: 1,
     marginLeft: 10,
+    paddingRight: 30,
+    fontFamily: "poppins-regular",
+  },
+  buttonBack: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -21,8 +21,7 @@ export default function Main({ navigation, route }) {
   const [isLoading, setLoading] = useState(true);
   const [resep, setResep] = useState({});
   const [category, setCategory] = useState();
-  // /api/search/?q=coto
-  // api/recipes-length/?limit=10
+
   const BASE_URL = "https://masak-apa.tomorisakura.vercel.app";
   const api_main = "/api/recipes-length/?limit=10";
   const api_category = "/api/categorys/recipes";
@@ -52,9 +51,21 @@ export default function Main({ navigation, route }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Selamat Datang</Text>
             <Text
-              style={{ fontSize: 30, color: "#FAB301", fontWeight: "bold" }}
+              style={{
+                fontSize: 30,
+                color: "#FF8E4C",
+                fontFamily: "poppins-bold",
+              }}
+            >
+              Selamat Datang
+            </Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "#FAB301",
+                fontFamily: "poppins-bold",
+              }}
             >
               {user}
             </Text>
@@ -82,7 +93,14 @@ export default function Main({ navigation, route }) {
           </View>
         </View>
 
-        <Text style={{ fontSize: 20, fontWeight: "600", marginBottom: 10 }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "600",
+            marginBottom: 10,
+            fontFamily: "poppins-regular",
+          }}
+        >
           Kategori
         </Text>
         <View>
@@ -108,13 +126,18 @@ export default function Main({ navigation, route }) {
           />
         </View>
 
-        <View style={{ marginTop: 10, alignItems: "center" }}>
+        <View
+          style={{
+            marginTop: 10,
+            alignItems: "center",
+          }}
+        >
           <Text style={styles.titles}>Resep Hari ini untuk kamu </Text>
         </View>
         {/* main */}
         <View style={{ alignItems: "center" }}>
           {isLoading ? (
-            <ActivityIndicator />
+            <ActivityIndicator size="large" color="#000" />
           ) : (
             <FlatList
               data={resep}
@@ -135,10 +158,17 @@ export default function Main({ navigation, route }) {
                     <View style={{ padding: 10 }}>
                       <Text style={styles.title}>{item.title}</Text>
                       <View style={{ flexDirection: "row" }}>
-                        <Text style={{ marginRight: 10 }}>
+                        <Text
+                          style={{
+                            marginRight: 10,
+                            fontFamily: "poppins-regular",
+                          }}
+                        >
                           {item.dificulty}
                         </Text>
-                        <Text>{item.times}</Text>
+                        <Text style={{ fontFamily: "poppins-regular" }}>
+                          {item.times}
+                        </Text>
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -155,11 +185,11 @@ export default function Main({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FDECD2",
+    backgroundColor: "#fff",
     paddingHorizontal: 20,
   },
   box: {
-    width: 350,
+    width: "98%",
     borderRadius: 10,
     marginRight: 10,
     shadowColor: "#000",
@@ -179,13 +209,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   thumb: {
-    width: 350,
+    width: "100%",
     height: 205,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
   text: { width: 300, borderBottomWidth: 1 },
-  title: { fontSize: 20, fontWeight: "500", marginBottom: 20 },
+  title: {
+    fontSize: 20,
+    fontWeight: "500",
+    marginBottom: 20,
+    fontFamily: "poppins-regular",
+  },
   icon: { width: 28, height: 28, marginLeft: 20 },
   searchContainer: {
     height: 50,
@@ -194,13 +229,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#EFEFEF",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   input: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600",
     flex: 1,
     marginLeft: 10,
     opacity: 0.5,
+    fontFamily: "poppins-regular",
   },
   category_box: {
     flexDirection: "row",
@@ -212,6 +256,14 @@ const styles = StyleSheet.create({
     width: width / 2,
     borderRadius: 30,
     backgroundColor: "#FAB301",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   category: {
     color: "#fff",
@@ -219,10 +271,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     marginVertical: 10,
+    fontFamily: "poppins-regular",
   },
   titles: {
-    fontSize: 25,
-    fontWeight: "700",
+    fontSize: 23,
+    fontFamily: "poppins-bold",
     marginVertical: 10,
   },
 });

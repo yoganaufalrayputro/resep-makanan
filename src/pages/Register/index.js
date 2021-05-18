@@ -76,7 +76,7 @@ const Register = ({ navigation }) => {
                 onBlur={props.handleBlur("email")}
                 autoCapitalize="none"
               />
-              <Text style={{ color: "red", marginTop: 5 }}>
+              <Text style={styles.warn}>
                 {props.touched.email && props.errors.email}
               </Text>
             </View>
@@ -89,7 +89,7 @@ const Register = ({ navigation }) => {
                 onBlur={props.handleBlur("username")}
                 autoCapitalize="none"
               />
-              <Text style={{ color: "red", marginTop: 5 }}>
+              <Text style={styles.warn}>
                 {props.touched.username && props.errors.username}
               </Text>
             </View>
@@ -102,7 +102,7 @@ const Register = ({ navigation }) => {
                 onChangeText={props.handleChange("password")}
                 onBlur={props.handleBlur("password")}
               />
-              <Text style={{ color: "red", marginTop: 5 }}>
+              <Text style={styles.warn}>
                 {props.touched.password && props.errors.password}
               </Text>
             </View>
@@ -110,7 +110,14 @@ const Register = ({ navigation }) => {
               style={styles.loginButton}
               onPress={props.handleSubmit}
             >
-              <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
+              <Text
+                style={{
+                  color: "#fff",
+                  fontSize: 27,
+                  fontWeight: "500",
+                  fontFamily: "poppins-bold",
+                }}
+              >
                 Sign Up
               </Text>
             </TouchableOpacity>
@@ -119,8 +126,15 @@ const Register = ({ navigation }) => {
       </Formik>
 
       <View style={styles.sign}>
-        <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
-          Sudah punya akun? 
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "400",
+            color: "#FFC979",
+            fontFamily: "poppins-regular",
+          }}
+        >
+          Sudah punya akun?
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text
@@ -128,9 +142,10 @@ const Register = ({ navigation }) => {
               fontSize: 20,
               fontWeight: "400",
               color: "#FF8E4C",
-              fontStyle: "italic",
-            }}>
-             Masuk
+              fontFamily: "poppins-italic",
+            }}
+          >
+            Masuk
           </Text>
         </TouchableOpacity>
       </View>
@@ -149,9 +164,8 @@ const styles = StyleSheet.create({
   },
   box: {
     width: "90%",
-    height: 490,
     bottom: 250,
-    padding: 35,
+    padding: 10,
     backgroundColor: "#fff",
     alignItems: "center",
     borderRadius: 20,
@@ -172,7 +186,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "400",
     color: "#FFC979",
-    marginBottom: 20,
+    marginBottom: 10,
+    fontFamily: "poppins-regular",
   },
   input: {
     width: 300,
@@ -219,4 +234,5 @@ const styles = StyleSheet.create({
     left: 180,
     bottom: 200,
   },
+  warn: { color: "red", marginTop: 5, fontFamily: "poppins-regular" },
 });

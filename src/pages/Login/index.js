@@ -72,13 +72,27 @@ const Login = ({ navigation }) => {
           />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={() => login()}>
-          <Text style={{ color: "#fff", fontSize: 27, fontWeight: "500" }}>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 27,
+              fontWeight: "500",
+              fontFamily: "poppins-bold",
+            }}
+          >
             Login
           </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.sign}>
-        <Text style={{ fontSize: 20, fontWeight: "400", color: "#FFC979" }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "400",
+            color: "#FFC979",
+            fontFamily: "poppins-regular",
+          }}
+        >
           Belum punya akun?
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
@@ -87,8 +101,9 @@ const Login = ({ navigation }) => {
               fontSize: 20,
               fontWeight: "500",
               color: "#FF8E4C",
-              fontStyle: "italic",
-            }}>
+              fontFamily: "poppins-italic",
+            }}
+          >
             Daftar
           </Text>
         </TouchableOpacity>
@@ -108,7 +123,6 @@ const styles = StyleSheet.create({
   },
   box: {
     width: "90%",
-    height: 390,
     bottom: 220,
     padding: 40,
     backgroundColor: "#fff",
@@ -132,6 +146,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#FFC979",
     marginBottom: 20,
+    fontFamily: "poppins-regular",
   },
   input: {
     width: 300,
