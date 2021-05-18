@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   wrapBox: {
-    width: 170,
+    width: "48%",
     marginRight: 10,
     marginBottom: 10,
     alignItems: "center",
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   image: {
-    width: 170,
+    width: "100%",
     height: 150,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,

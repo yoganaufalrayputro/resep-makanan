@@ -114,11 +114,7 @@ export default DetailResep;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-    backgroundColor: "#FFFFFF",
-=======
     backgroundColor: "#fff",
->>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     justifyContent: "center",
     alignContent: "center",
     paddingHorizontal: 25,
@@ -140,13 +136,8 @@ const styles = StyleSheet.create({
     marginRight: 3,
     marginBottom: 15,
     borderRadius: 10,
-<<<<<<< HEAD
-    backgroundColor: "#C3D6E7",
-    paddingLeft: 20,
-=======
     backgroundColor: "#FDECD2",
     paddingHorizontal: 20,
->>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     flexDirection: "row",
 
     elevation: 1,

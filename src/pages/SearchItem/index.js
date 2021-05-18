@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapBox: {
-    width: 170,
+    width: "47%",
     marginRight: 10,
     marginBottom: 10,
     alignItems: "center",
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   image: {
-    width: 170,
+    width: "100%",
     height: 150,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,

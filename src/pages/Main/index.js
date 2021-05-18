@@ -64,10 +64,6 @@ export default function Main({ navigation, route }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-<<<<<<< HEAD
-            <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Halo, Chef</Text>
-=======
->>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
             <Text
               style={{
                 fontSize: 30,
@@ -201,11 +197,7 @@ export default function Main({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
     backgroundColor: "#FFFFFF",
-=======
-    backgroundColor: "#fff",
->>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
     paddingHorizontal: 20,
   },
   box: {
@@ -234,20 +226,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-<<<<<<< HEAD
-  text: { 
-    width: 300, 
-    borderBottomWidth: 1 
-  },
-  title: { 
-    fontSize: 20, 
-    fontWeight: "500", 
-    marginBottom: 20 },
-  icon: { 
-    width: 28, 
-    height: 28, 
-    marginLeft: 20 },
-=======
   text: { width: 300, borderBottomWidth: 1 },
   title: {
     fontSize: 20,
@@ -256,7 +234,6 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-medium",
   },
   icon: { width: 28, height: 28, marginLeft: 20 },
->>>>>>> f8e4657bd6929cd00fbd1850a8f66d5c404c6005
   searchContainer: {
     height: 50,
     borderRadius: 20,
