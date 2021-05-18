@@ -114,7 +114,7 @@ export default DetailResep;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FDECD2",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignContent: "center",
     paddingHorizontal: 25,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     marginRight: 3,
     marginBottom: 15,
     borderRadius: 10,
-    backgroundColor: "#FDECD2",
+    backgroundColor: "#C3D6E7",
     paddingLeft: 20,
     flexDirection: "row",
   },

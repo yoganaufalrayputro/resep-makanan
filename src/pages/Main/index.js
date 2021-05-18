@@ -53,11 +53,11 @@ export default function Main({ navigation, route }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Selamat Datang</Text>
+            <Text style={{ fontSize: 30, color: "#FF8E4C", fontWeight: "bold" }}>Halo, Chef</Text>
             <Text
               style={{ fontSize: 30, color: "#FAB301", fontWeight: "bold" }}
             >
-              {user}
+              {user}!
             </Text>
           </View>
           <Image
@@ -156,7 +156,7 @@ export default function Main({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FDECD2",
+    backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
   },
   box: {
@@ -185,9 +185,18 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  text: { width: 300, borderBottomWidth: 1 },
-  title: { fontSize: 20, fontWeight: "500", marginBottom: 20 },
-  icon: { width: 28, height: 28, marginLeft: 20 },
+  text: { 
+    width: 300, 
+    borderBottomWidth: 1 
+  },
+  title: { 
+    fontSize: 20, 
+    fontWeight: "500", 
+    marginBottom: 20 },
+  icon: { 
+    width: 28, 
+    height: 28, 
+    marginLeft: 20 },
   searchContainer: {
     height: 50,
     borderRadius: 20,
